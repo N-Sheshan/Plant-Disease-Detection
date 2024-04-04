@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auto-move to next div on space press & Auto-resize div on typing</title>
+<style>
+    .word {
+        display: inline-block;
+        border: 1px solid black;
+        padding: 5px;
+        margin: 5px;
+        min-width: 30px; /* Minimum width */
+        text-align: center; /* Center text within the div */
+        white-space: nowrap; /* Prevent text from wrapping */
+    }
+</style>
+</head>
+<body>
+
+<div id="container">
+    <div class="word" contenteditable="true"></div>
+    <div class="word" contenteditable="true"></div>
+    <!-- Add more divs with the 'word' class as needed -->
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const wordDivs = document.querySelectorAll('.word');
+
+    wordDivs.forEach(function(div, index) {
+        div.addEventListener('input', function() {
+            const textWidth = div.scrollWidth;
+            const padding = parseInt(window.getComputedStyle(div).paddingLeft) + parseInt(window.getComputedStyle(div).paddingRight);
+            div.style.width = (textWidth + padding) + 'px';
+        });
+
+        div.addEventListener('keydown', function(event) {
+            if ((event.key === ' ' || event.key === 'Spacebar') && div.textContent.trim() !== "") {
+                event.preventDefault(); // Prevent space from being entered in the div
+                const nextDiv = wordDivs[index + 1];
+                if (nextDiv) {
+                    nextDiv.focus();
+                }
+            }
+        });
+    });
+});
+</script>
+
+</body>
+</html>
+
