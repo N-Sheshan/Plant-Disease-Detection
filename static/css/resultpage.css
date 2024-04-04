@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+body{
+    --bg-image-filter: brightness(100%) saturate(100%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+    background-image: url("/static/images/famer2.jpg"); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 46%;
+    /* overflow: hidden; */
+    background-color: rgba(134, 125, 125, 0);
+    filter: var(--bg-image-filter);
+   }  
+.drop-zone {
+	max-width: 700px;
+	height: 300px;
+	padding: 25px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	font-family: "Quicksand", sans-serif;
+	font-weight: 500;
+	font-size: 20px;
+	cursor: pointer;
+	color: #cccccc;
+	border: 4px dashed #009578;
+	border-radius: 10px;
+}
+
+.container{
+    background-color: #ffffff96;
+  padding: 15px;
+  border-radius: 25px;
+}
+
+.container img{
+    width: 500px;
+    
+  border-radius: 25px;
+}
+.result , .title,.container{
+display: flex;
+  justify-content: center;
+  align-content: center;}
+
+  .download,.back{
+    cursor: pointer;
+    background-color: #5cff007a;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    width: 45%;
+    border: none;
+    border-radius: 15px;
+    font-size: large;
+    font-weight: bolder;
+  }
+  .dutton{
+    display: flex;
+    justify-content: space-between; 
+  }
+  h2{
+    color: rgb(0, 0, 0);
+  font-size: x-large;
+  font-weight: bolder;
+  }
+  .title h1{
+    background-color: #5cff007a;
+  padding: 5px 10px;
+  border-radius: 5px;
+  }

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Plant Disease Detection</title>
+    <link rel="stylesheet" href="{% static 'css/resultpage.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+        <div class="title">
+            <h1>Result of the selected Image</h1>
+        </div>
+
+    {% if base64_image %}
+    <img src="data:image/png;base64,{{ base64_image }}" alt="Uploaded Image"  >
+    {% else %}
+        <p>No image available.</p>
+    {% endif %}
+
+
+    <div class="result">
+        <div class="result_content">
+            {% if predicted %}
+        <h2>Result : {{predicted}}</h2>
+        {% endif %}
+        {% if confident %}
+        <h2>Confident : {{confident}}%</h2>
+        
+        {% endif %}
+        </div>
+        
+    </div>
+<div class="dutton">
+    <button class="download" onclick="openPdfInNewTab() ">Download Report...</button>
+    <button class="back" onclick="location.href='{% url 'upload_form' %}'">Back to predict</button>
+
+</div>
+</div>
+    </div>
+
+    <script>
+        function openPdfInNewTab() {
+            var pdfUrl = "{% url 'report' %}";
+            window.open(pdfUrl, "_blank");
+        }
+   
+    </script>
+</body>
+</html>

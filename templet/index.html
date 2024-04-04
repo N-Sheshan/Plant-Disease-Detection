@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<head>
+  <title>Plant Disease Detection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <link rel="shortcut icon" href="/assets/favicon.ico">
+  <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Plant Disease Detection model </h1><br>
+        
+        <form id="uploadForm" method="post" enctype="multipart/form-data" action="{% url 'upload_image' %}">
+            {% csrf_token %}
+            
+            <div class="drop-zone" onclick="triggerFileInput()">
+                <span class="drop-zone__prompt" id="dropPrompt">Drop file here or click to upload</span>
+                <input type="file" name="image" id="fileInput" class="drop-zone__input" onchange="displaySelectedImage()" required>
+            </div>
+    
+            <!-- Image preview -->
+            <!-- <img id="imagePreview" class="image-preview" alt="Selected Image Preview"> -->
+    
+            <input class="submit" type="submit" value="Predict">
+        </form>
+
+        
+       
+        
+        
+    </div>
+    <script src="{% static 'javascript/script.js' %}"></script>
+</body>
+</html>
+
+<!-- predict_form.html -->
